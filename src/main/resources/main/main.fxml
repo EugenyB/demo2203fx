@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="main.MainController">
+    <center>
+        <AnchorPane prefHeight="400.0" prefWidth="600.0">
+
+        </AnchorPane>
+    </center>
+    <top>
+        <VBox prefHeight="60.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <MenuBar>
+                <Menu mnemonicParsing="false" text="File">
+                    <MenuItem mnemonicParsing="false" text="Close"/>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <MenuItem mnemonicParsing="false" text="Delete"/>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <MenuItem mnemonicParsing="false" text="About"/>
+                </Menu>
+            </MenuBar>
+            <ToolBar prefHeight="40.0" prefWidth="200.0">
+                <TextField fx:id="startField" prefHeight="26.0" prefWidth="66.0"/>
+                <TextField fx:id="finishField" prefHeight="26.0" prefWidth="66.0"/>
+                <TextField fx:id="stepField" prefHeight="26.0" prefWidth="66.0"/>
+                <Button mnemonicParsing="false" onAction="#tabulate" text="Tab"/>
+            </ToolBar>
+        </VBox>
+    </top>
+    <left>
+        <TableView fx:id="pointsTable" prefHeight="400.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="xCol" prefWidth="75.0" text="X"/>
+                <TableColumn fx:id="yCol" prefWidth="75.0" text="Y"/>
+            </columns>
+        </TableView>
+    </left>
+</BorderPane>
