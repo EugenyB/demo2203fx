@@ -7,8 +7,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import main.data.Point;
+import main.logic.Logic;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainController {
@@ -26,11 +26,10 @@ public class MainController {
     @FXML
     private TableColumn<Point, Double> yCol;
 
-    public double f(double x) {
-        return Math.sin(x);
-    }
+    private Logic logic;
 
     public void initialize() {
+        logic = new Logic();
         xCol.setCellValueFactory(p -> new SimpleDoubleProperty(p.getValue().x()).asObject());
         yCol.setCellValueFactory(p -> new SimpleDoubleProperty(p.getValue().y()).asObject());
     }
@@ -40,14 +39,9 @@ public class MainController {
         double finish = Double.parseDouble(finishField.getText());
         double step = Double.parseDouble(stepField.getText());
 
-        List<Point> points = new ArrayList<>();
-        int n = (int) Math.round((finish - start) / step + 1);
-        for (int i = 0; i < n; i++) {
-            double x = start + i * step;
-            double y = f(x);
-            points.add(new Point(x, y));
-        }
+        List<Point> points = logic.tabulatePoints(start, finish, step);
         pointsTable.setItems(FXCollections.observableList(points));
-
     }
+
+
 }
